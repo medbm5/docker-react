@@ -10,13 +10,9 @@ script:
   - docker run -e CI=true medbm/docker-react npm run test
 
 deploy:
-  provider: elasticbeanstalk
-  region: "us-east-2"
-  access_key_id: $ACCESS_KEY
-  secret_access_key: "$SECRET_KEY" 
-  app: "docker-react"
-  env: "Dockerreact-env"
-  bucket-name: "elasticbeanstalk-us-east-2-803066692933"
+  provider: heroku
+  api_key:
+    secure: "$HEROKU_API_KEY"
   on:
     branch : master
    
