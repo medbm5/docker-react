@@ -8,3 +8,16 @@ before-install:
 
 script:
   - docker run medbm/docker-react npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker-react"
+  env: "Dockerreact-env"
+  bucket-name: "elasticbeanstalk-us-east-2-803066692933"
+  path: "docker-react"
+  on:
+    branch : master
+  access_key_id: $ACCESS_KEY
+  secret_access_key: 
+    secure: "$SECRET_KEY"  
